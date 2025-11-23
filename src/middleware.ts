@@ -40,7 +40,11 @@ export async function middleware(request: NextRequest) {
             return NextResponse.redirect(new URL('/login', request.url))
         }
 
+        console.log('Middleware: User Email:', user.email);
+        console.log('Middleware: Admin Email:', process.env.ADMIN_EMAIL);
+
         if (user.email !== process.env.ADMIN_EMAIL) {
+            console.log('Middleware: Access Denied. Redirecting to home.');
             // Optional: Redirect to a "Not Authorized" page or just Home
             return NextResponse.redirect(new URL('/', request.url))
         }

@@ -16,8 +16,11 @@ export default async function AdminDashboard() {
         .select('*')
         .order('created_at', { ascending: false })
 
+    console.log('Admin Dashboard: Fetching submissions...');
     if (error) {
-        console.error('Error fetching submissions:', error)
+        console.error('Error fetching submissions:', error);
+    } else {
+        console.log(`Admin Dashboard: Fetched ${submissions?.length || 0} submissions.`);
     }
 
     return (
